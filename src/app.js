@@ -1,12 +1,11 @@
-// Importando o express
 import express from 'express'
 
 const app = express()
 
-// Expresse identificar json
+
 app.use(express.json())
 
-// mock
+
 const selecoes = [       
     {id: 1, selecao: 'Brasil', grupo: 'G'},
     {id: 2, selecao: 'Suíça', grupo: 'G'},
@@ -22,7 +21,7 @@ function indexSelecao(id){
     return selecoes.findIndex(selecao => selecao.id == id)
 }
 
-// Criando uma rota padrão ou raiz
+
 app.get('/', (req, res) => {
     res.send('Curso de Node JS')
 })
@@ -31,7 +30,7 @@ app.get('/selecoes', (req, res) =>{
     res.status(200).send(selecoes)
 })
 
-// Id é um parâmetro da requisição
+
 app.get("/selecoes/:id", (req, res) =>{
     let index = req.params.id
     res.json(idSelecao(index))
